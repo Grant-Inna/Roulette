@@ -1,0 +1,43 @@
+            p Alice Madness Returns
+            p American McDee's Alice
+            p Deep Rock Galactic Survivor
+            p Guacamelee!
+            p Русы против Ящеров
+            p Dark Souls 1
+            p Затерянный мир 3
+            p Into the Breach
+            p Etherlords 2
+
+
+
+doctype
+html
+
+   include assets/jade/static/__head
+   +title( 'Рулеточка :3' )
+
+   body#container
+      #container_main
+         #black_back
+         .container
+            .games_name__list
+               p.game__name.name-1 1
+               p.game__name.name-2 2
+               p.game__name.name-3 3
+               p.game__name.name-4 4
+               p.game__name.name-5.active 5
+               p.game__name.name-6 6
+               p.game__name.name-7 7
+               p.game__name.name-8 8
+               p.game__name.name-9 9
+
+
+
+      include assets/jade/footer/footer
+
+      include assets/jade/static/script
+
+
+
+
+
