@@ -1,0 +1,17 @@
+mixin schedule( date, name, position, about1, about2 )
+   article.schedule__holder.mb3
+      .schedule__block-1.mb2
+         .top.schedule__date !{date}
+         .schedule__time
+            .icon-time.mr05
+            .schedule_time__text.text-22 1-1,5 часа
+      .schedule__block-2.mb2
+         .top.schedule__name !{name}
+         .schedule__position.text-22 !{position}
+      .schedule__block-3
+         .top.schedule__about
+            .icon-dot.mr05
+            .schedule_about__text !{about1}
+         .schedule__about
+            .icon-dot.mr05
+            .schedule_about__text !{about2}

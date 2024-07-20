@@ -1,0 +1,8 @@
+mixin step( numb, title, date, about)
+   article.hackathon_step__holder
+      .hackathon_step__icon
+         div( class='hackathon_step__icon-#{numb}' )
+      .hackathon_step__about
+         h1.title.mb04 !{title}
+         .hackathon_step__date.mb06 !{date}
+         .hackathon_step__about !{about}

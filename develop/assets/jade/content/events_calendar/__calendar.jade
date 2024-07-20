@@ -1,0 +1,10 @@
+mixin events_calendar( month, m )
+   .events_calendar__one_month
+      .row
+         .calendar.calendar-long.col
+            .relative
+            .calendar__holder
+               img( src='./assets/data/calendar/#{month}.svg' )
+
+         .event__name-empty
+            span На !{m} мероприятий пока не&nbsp;запланировано

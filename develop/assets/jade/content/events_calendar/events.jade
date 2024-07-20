@@ -1,0 +1,41 @@
+section( aria-label='Календарь мероприятий центра' ).events_calendar__container
+   .wrapper
+      .events__slider
+         #events_calendar__slider
+            .slider__month
+               include __month
+
+               +month( 'Июнь' )
+               +month( 'Июль' )
+               +month( 'Август' )
+               +month( 'Сентябрь' )
+               +month( 'Октябрь' )
+               +month( 'Ноябрь' )
+               +month( 'Декабрь' )
+               +month( 'Январь' )
+               +month( 'Февраль' )
+               +month( 'Март', 'new' )
+               +month( 'Апрель' )
+               +month( 'Май' )
+
+            .slider__calendar
+               include __calendar
+               include __calendar-null
+               include __calendar-1
+               include __calendar-2
+               include __calendar-3
+               include __calendar-4
+               include __calendar-5
+               +events_calendar-3( '06', 'orange', 'orange', 'green','14-15', 'июня', '&laquo;Поиск решений&raquo;<br>Окружное совещание для руководителей Центров <span class="wwnow">&laquo;IT-куб&raquo;</span>', 'СФО, ДФО и УФО', '', '<strong>июнь</strong>', 'Отборочный этап II Всероссийского конкурса педагогов Центров цифрового образования детей <span class="wwnow">&laquo;IT-куб&raquo;</span> &laquo;Помогаю. Проектирую. Программирую. Будущее&raquo;', '', '', '<strong>июнь</strong>', 'Отборочный этап II Всероссийского хакатона &laquo;Обучаюсь. Проектирую. Программирую. Будущее&raquo;', '' )
+               +events_calendar-3( '07', 'orange', 'green', 'blue', '', '<strong>июль</strong>', 'Отборочный этап II Всероссийского конкурса педагогов Центров цифрового образования детей <span class="wwnow">&laquo;IT-куб&raquo;</span> &laquo;Помогаю. Проектирую. Программирую. Будущее&raquo;', '', '', '<strong>июль</strong>', 'Отборочный этап II Всероссийского хакатона &laquo;Обучаюсь. Проектирую. Программирую. Будущее&raquo;', '', '', '<strong>июль</strong>', 'Мониторинг выполнения показателей Центров <span class="wwnow">&laquo;IT-куб&raquo;</span>', '' )
+               +events_calendar-3( '08', 'orange', 'orange', 'green', '20-21', 'августа', 'II Всероссийский съезд руководителей Центров <span class="wwnow">&laquo;IT-куб&raquo;</span> &laquo;Как Управлять Будущим&raquo;', '', '', '<strong>август</strong>', 'Отборочный этап II Всероссийского конкурса педагогов Центров цифрового образования детей <span class="wwnow">&laquo;IT-куб&raquo;</span> &laquo;Помогаю. Проектирую. Программирую. Будущее&raquo;', '', '', '<strong>август</strong>', 'Отборочный этап II Всероссийского хакатона &laquo;Обучаюсь. Проектирую. Программирую. Будущее&raquo;', ''  )
+               +events_calendar-2( '09', 'orange', 'green', '10', 'сентября', 'Объявление финалистов II Всероссийского конкурса педагогов Центров цифрового образования детей <span class="wwnow">&laquo;IT-куб&raquo;</span> &laquo;Помогаю. Проектирую. Программирую. Будущее&raquo;', '', '15', 'сентября', 'Объявление финалистов II Всероссийского хакатона &laquo;Обучаюсь. Проектирую. Программирую. Будущее&raquo;', '' )
+               +events_calendar-3( '10', 'green', 'blue', 'blue', '9-11', 'октября', 'Заключительный этап II Всероссийского хакатона &laquo;Обучаюсь. Проектирую. Программирую. Будущее&raquo;', '', '28', 'октября', 'Совещание с региональными координаторами', '', '', '<strong>октябрь</strong>', 'Мониторинг выполнения показателей Центров <span class="wwnow">&laquo;IT-куб&raquo;</span>', '' )
+               +events_calendar-1( '11', 'orange', '15', 'ноября', 'Финал II Всероссийского конкурса педагогов Центров цифрового образования детей <span class="wwnow">&laquo;IT-куб&raquo;</span> &laquo;Помогаю. Проектирую. Программирую. Будущее&raquo;', '' )
+               +events_calendar-1( '12', 'blue', '', '<strong>декабрь</strong>', 'Мониторинг проведения повышения квалификации педагогических работников', '' )
+               +events_calendar-1( '1', 'blue', '', '<strong>январь<br>2025</strong>', 'Мониторинг выполнения показателей Центров <span class="wwnow">&laquo;IT-куб&raquo;</span>', '' )
+               +events_calendar-null( '02', 'феврале' )
+               +events_calendar-1( '03',  'orange', '30', 'марта', '&laquo;Поиск решений&raquo;<br>Окружное совещание для&nbsp;руководителей Центров <span class="wwnow">&laquo;IT-куб&raquo;</span>', 'СЗФО и&nbsp;ЦФО'  )
+               +events_calendar-4( '04', 'blue', 'orange', 'green', 'blue', '22', 'апреля', 'Совещание с&nbsp;региональными координаторами', '', '', '<strong>апрель</strong>', 'Прием заявок для&nbsp;участия в&nbsp;II Всероссийском конкурсе педагогов Центров цифрового образования детей <span class="wwnow">&laquo;IT-куб&raquo;</span> &laquo;Помогаю. Проектирую. Программирую. Будущее&raquo;', '', '', 'апрель', 'Прием заявок для&nbsp;участия в&nbsp;II Всероссийском хакатоне &laquo;Обучаюсь. Проектирую. Программирую. Будущее&raquo;', '', '', '<strong>апрель</strong>', 'Мониторинг выполнения показателей Центров <span class="wwnow">&laquo;IT-куб&raquo;</span>', '' )
+               +events_calendar-3( '05', 'orange', 'orange', 'green', '21-22', 'мая', '&laquo;Поиск решений&raquo;<br>Окружное совещание для&nbsp;руководителей Центров <span class="wwnow">&laquo;IT-куб&raquo;</span>', 'СКФО, ЮФО И ПФО', '', '<strong>май</strong>', 'Отборочный этап II Всероссийского конкурса педагогов Центров цифрового образования детей <span class="wwnow">&laquo;IT-куб&raquo;</span> &laquo;Помогаю. Проектирую. Программирую. Будущее&raquo;', '', '', '<strong>май</strong>', 'Отборочный этап II Всероссийского хакатона &laquo;Обучаюсь. Проектирую. Программирую. Будущее&raquo;', '' )
+

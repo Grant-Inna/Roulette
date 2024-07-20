@@ -1,0 +1,8 @@
+mixin video( name, position, text, link )
+   article.congress__article
+      .congress__person
+         h1.text-25 !{name}
+         h2.text-22.mb05 !{position}
+         h3.text-22.text-blue.mb1
+            a( href='#{link}' target='_blank') !{text}
+      .icon-video.ml2

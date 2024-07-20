@@ -1,0 +1,64 @@
+html {
+   font-size: 15px;
+   .middle( font-size, 12px );
+   .sm( font-size, 10px );
+}
+body {
+   font-size: 1.1rem; /* 17 */
+   line-height: 1.4rem;
+   .sm-block({
+      font-size: 1.3rem; /* 13 */
+      line-height: 1.6;
+   });
+   .montserrat-regular();
+   background-color: @color-back-white;
+   color: @color-black;
+}
+.sm {
+   font-size: 1rem;
+   line-height: 1.15rem;
+   .sm-block({
+      font-size: 1.2rem;
+      line-height: 1.35;
+   });
+}
+
+#container_federal {
+   position: relative;
+   z-index: 100;
+}
+
+#container_competition,
+#container_competition_archive_2023 {
+   overflow: hidden;
+}
+#container_hackathon {
+   overflow: hidden;
+   position: relative;
+}
+#container_meetings {
+   overflow: hidden;
+   position: relative;
+   background-color: white;
+}
+.wrapper {
+   .wrapper();
+}
+.row() {
+   .row-flex();
+}
+.row {
+   .row-flex();
+}
+.col {
+   .col();
+}
+
+a {
+   display: block;
+   text-decoration: none;
+   cursor: pointer;
+   
+   color: inherit;
+   .tr();
+}

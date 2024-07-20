@@ -1,0 +1,22 @@
+mixin semifinalists( name, position, img, link, link2 )
+   article.semifinalist_one__holder
+      strong.text-22 !{name}
+      .semi-line
+      p.text-20 !{position}
+      .semifinalists__image.mtauto( id='trigger_#{img}' )
+         img( src='./assets/data/teacher_competition/semifinalist/#{img}.jpg' )
+   .semifinalist_one__modal( id='#{img}' )
+      .modal
+         .modal_container
+            .modal_close.mb1
+            h1.text-25.center.mb2 !{name}
+            .video_relative
+               .video_ratio
+               .iframe_holder
+                  iframe(src='#{link}' width='100%' height='100%' frameborder='0' allowfullscreen)
+                     p Твой браузер устарел для отображения элемента iframe
+            .congress_button__holder.mt2
+               a( href='#{link2}' target='_blank' ).video__button
+                  .video_button__inner
+                     .icon-video-vk.mr1
+                     .video_button__text Посмотреть видео на сайте

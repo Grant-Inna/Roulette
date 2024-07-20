@@ -1,0 +1,27 @@
+mixin winners( nbr, title, name1, place1, name2, place2, name3, place3 )
+   section.hackathon_winners__holder.mb5
+      .hackathon_winners__caption
+         .hackathon_winners__caption_icon( class='hw__caption_icon-#{nbr}')
+         h1.title !{title}
+      .hackathon_winners__list.mt2
+         .row
+            article.block_8
+               .hackathon_winner__img
+                  img( src='./assets/data/hackathon/winners/winners/#{nbr}/1.png' )
+                  .hackathon_winner__place( class='hw__place-1' )
+               .hackathon_winner__name.text-22 !{name1}
+               .hackathon_winner__location.text-22 !{place1}
+
+            article.block_8
+               .hackathon_winner__img
+                  img( src='./assets/data/hackathon/winners/winners/#{nbr}/2.png' )
+                  .hackathon_winner__place( class='hw__place-2' )
+               .hackathon_winner__name.text-22 !{name2}
+               .hackathon_winner__location.text-22 !{place2}
+
+            article.block_8
+               .hackathon_winner__img
+                  img( src='./assets/data/hackathon/winners/winners/#{nbr}/3.png' )
+                  .hackathon_winner__place( class='hw__place-3' )
+               .hackathon_winner__name.text-22 !{name3}
+               .hackathon_winner__location.text-22 !{place3}

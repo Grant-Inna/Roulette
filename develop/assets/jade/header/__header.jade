@@ -1,0 +1,12 @@
+mixin menu( active1, active2, active3, active4, active5, active6, active7, active8, active9, active10, active11 )
+   header.header__container
+      .wrapper
+         a( href='./index.html' ).header__logo.logo_kub
+            img( src='./assets/data/logo/kub-static.svg' )
+         include __menu
+         +menu( active1, active2, active3, active4, active5, active6, active7, active8, active9, active10, active11 )
+         .menu__mobile
+            .menu__mobile_icon
+   include __menu-mobile
+   +menu_mobile( active1, active2, active3, active4, active5, active6, active7, active8, active9, active10, active11 )
+

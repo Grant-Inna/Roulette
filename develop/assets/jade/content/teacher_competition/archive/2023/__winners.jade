@@ -1,0 +1,19 @@
+mixin winners( img, section, name, position )
+   article.winners__holder
+      .block_12.winners__image
+         .winners_image__text
+            .text-25 Лучший педагог Центров &laquo;IT-куб&raquo;
+               .block в&nbsp;направлении
+            h1.mt1 !{section}
+         .winners_image_relative
+            .winners_image_ratio
+            .winners_image_holder( class='winners__image-#{img}' )
+      .block_12.winners__info
+         .winners_info_relative
+            .winners_info_ratio
+            .winners_info_holder( class='winners_info__image-#{img}' )
+         .winners_info__data
+            strong.block.text-25.mb1 !{name}
+            .semi-line
+            p.text-18 Центр цифрового образования детей &laquo;IT-куб&raquo;
+            b.text-20 !{position}

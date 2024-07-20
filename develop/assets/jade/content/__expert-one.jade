@@ -1,0 +1,8 @@
+mixin expert( photo, name, about, position)
+   article.expert_carousel__item
+      .expert_carousel__item_hover
+         .expert_carousel__photo.mb1
+            img( src='./assets/data/teacher_competition/experts/#{photo}-2.png' alt='#{name}' )
+         h1.text-22.expert_carousel__name.mb05 !{name}
+         .expert_carousel__about.mb05 !{about}
+         strong.expert_carousel__position !{position}

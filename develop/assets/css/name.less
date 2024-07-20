@@ -6,54 +6,111 @@
 }
 
 .games_name__list {
-  width: 100%;
-  height: 100%;
-  transform-style: preserve-3d;
-
-   text-align: center;
-   perspective: 500px;
+   position: relative;
+   width: 100%;
+   height: 100%;
+   
+   
+   //transform-style: preserve-3d;
+   //perspective: 500px;
 }
 .active {
-   .montserrat-semibold();
-   font-size: 2.5rem;
-   line-height: 170%;
+   .montserrat-bold();
+   font-size: 3rem;
+   line-height: 200%;
+   .tr()
 }
 .two, .two-l {
-   .montserrat-medium();
-   font-size: 2.2rem;
+   .montserrat-semibold();
+   font-size: 2.6rem;
    line-height: 160%;
+   .tr()
 }
 .three, .three-l {
-   .montserrat-regular();
-   font-size: 2rem;
+   .montserrat-medium();
+   font-size: 2.2rem;
    line-height: 150%;
+   .tr()
 }
 .four, .four-l {
-   .montserrat-light();
+   .montserrat-regular();
    font-size: 1.8rem;
    line-height: 140%;
+   .tr()
 }
 .five, .five-l {
    .montserrat-extralight();
-   font-size: 1.4rem;
+   font-size: 1.3rem;
    line-height: 130%;
+   .tr()
+}
+
+.prev, .next {
+   color: transparent;
+   .montserrat-extralight();
+   .tr();
 }
 //.active { transform: translateZ(50px); }
 //.two { transform: translateZ(40px); }
 
-.three { transform: translateZ(30px); }
+/*.three { transform: translateZ(30px); }
 .three-l { transform: translateZ(30px); }
 
 .four {
-   transform: translateZ(20px) rotateX(30deg);
+   transform: translateZ(20px);
 }
 .four-l {
-   transform: translateZ(20px) rotateX(-30deg);
+   transform: translateZ(20px);
 }
 
 .five {
-   transform: translateZ(10px) rotateX(45deg);
+   transform: translateZ(10px) ;
 }
 .five-l {
-   transform: translateZ(10px) rotateX(-40deg);
+   transform: translateZ(10px);
+}*/
+
+
+
+.game__name {
+   position: absolute;
+   width: 100%;
+   text-align: center;
+   .tr();
+   
+   &.active {
+      top: 50%;
+   }
+   &.two {
+      top: 45%;
+   }
+   &.three {
+      top: 41%;
+   }
+   &.four {
+      top: 37%;
+   }
+   &.five {
+      top: 34%;
+   }
+   
+   &.two-l {
+      top: 59%;
+   }
+   &.three-l {
+      top: 66%;
+   }
+   &.four-l {
+      top: 72%;
+   }
+   &.five-l {
+      top: 76%;
+   }
+   
+   &.prev {
+      top: 20%;
+   }
+   &.next {
+      top: 90%;
+   }
 }

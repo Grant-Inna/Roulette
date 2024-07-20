@@ -1,0 +1,14 @@
+mixin nomination-more( icon, text, title, more1, more2, more3 )
+   .nominations__holder.text-22( class='nomination_icon-#{icon}' )
+      .nominations__text_holder
+         .nominations__text.mb1 !{text}
+         h2.nominations__title.title.mb3 !{title}
+         .nominations__text.mb1 !{more1}
+         case (more2)
+            when ''
+            default
+               .nominations__text !{more2}
+         case (more3)
+            when ''
+            default
+               .nominations__text !{more3}

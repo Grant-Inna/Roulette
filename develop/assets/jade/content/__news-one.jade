@@ -1,0 +1,13 @@
+mixin news( day, month, year, text, link )
+   article.row.news__holder.mb4( id='#{link}' )
+      .news_date__holder
+         strong.text-27.mb !{day}
+            span.first &nbsp;/&nbsp;
+            span.second .
+            | !{month}
+            span.second .
+         strong.text-22 !{year}
+      .line
+      .news_text__holder
+         strong.block.text-22 !{text}
+         a( href='./news/news-one.html##{link}' ).news__more.hover.inline Подробнее

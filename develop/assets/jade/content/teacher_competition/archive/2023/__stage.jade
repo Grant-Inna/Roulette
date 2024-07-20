@@ -1,0 +1,13 @@
+mixin stage( icon, title, month, what, text )
+   .competition_stage__holder.text-22
+      .competition_stage__icon( class='stage_icon-#{icon}' )
+      .competition_stage__about
+         .competition_stage__title( class='competition_stage_icon-#{icon}' )
+            h2.title !{title}
+            .competition_stage__month.mb15 (!{month})
+         .competition_stage__phase !{what}:
+         .competition_stage__text !{text}
+      .competition_stage__arrow
+         object( type="image/svg+xml", data="assets/data/teacher_competition/animate/arrow-2.svg" )
+            img( src='./assets/data/teacher_competition/icons/icon-stage-arrow-adapt.svg' )
+

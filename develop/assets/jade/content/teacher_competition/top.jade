@@ -1,0 +1,29 @@
+section( aria-label='Конкурс педагогов' ).competition__container
+   .wrapper
+      .competition__grid_holder
+         .competition__grid_robo-hand
+            object( type="image/svg+xml", data="assets/data/teacher_competition/animate/robo-hand.svg" )
+               img( src='./assets/data/teacher_competition/icons/robo-hand.svg' )
+         .competition__grid_hand
+            .competition__hand_icon
+            .competition__hand_holder
+               .competition__hand_caption
+               .competition__hand_title
+         //.competition__info
+         .competition__grid_image
+            .competition__image_before
+               object( type="image/svg+xml", data="assets/data/teacher_competition/animate/stripes.svg" )
+                  img( src='./assets/data/teacher_competition/icons/stripes.svg' )
+         menu.competition__grid_navigation
+            include __navigation
+            +item( 'О&nbsp;конкурсе', 'about' )
+            +item( 'Этапы проведения', 'stages' )
+            +item( 'Условия участия', 'terms' )
+            +item( 'Мероприятие 2023', 'archive' )
+            a( href='./assets/data/files/teacher_competition/2024/Polozheniye_o_Konkurse_pedagogov_2024.pdf' target='blank').competition__regulations
+               .competition__regulations_icon
+               .competition__regulations_text Положение
+                  br
+                  | о&nbsp;конкурсе
+
+

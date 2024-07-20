@@ -1,0 +1,48 @@
+mixin events_calendar-5( month, color, color2, color3, color4, color5, date, m, name, link, date2, m2, name2, link2, date3, m3, name3, link3, date4, m4, name4, link4, date5, m5, name5, link5 )
+   .events_calendar__one_month
+      .row
+         .calendar.col
+            .relative
+            .calendar__holder
+               img( src='./assets/data/calendar/#{month}.svg?v=3' )
+         section( aria-label='Мероприятия' ).col
+            .row
+               .event__date_holder.col( class='event_#{color}' )
+                  .event__date !{date}
+                  .event__month_text !{m}
+               .line
+               .event__about_holder.col
+                  .event__name !{name}
+                  .event__link !{link}
+            .row
+               .event__date_holder.col( class='event_#{color2}' )
+                  .event__date !{date2}
+                  .event__month_text !{m2}
+               .line
+               .event__about_holder.col
+                  .event__name !{name2}
+                  .event__link !{link2}
+            .row
+               .event__date_holder.col( class='event_#{color3}' )
+                  .event__date !{date3}
+                  .event__month_text !{m3}
+               .line
+               .event__about_holder.col
+                  .event__name !{name3}
+                  .event__link !{link3}
+            .row
+               .event__date_holder.col( class='event_#{color4}' )
+                  .event__date !{date4}
+                  .event__month_text !{m4}
+               .line
+               .event__about_holder.col
+                  .event__name !{name4}
+                  .event__link !{link4}
+            .row
+               .event__date_holder.col( class='event_#{color5}' )
+                  .event__date !{date5}
+                  .event__month_text !{m5}
+               .line
+               .event__about_holder.col
+                  .event__name !{name5}
+                  .event__link !{link5}

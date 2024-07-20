@@ -1,0 +1,24 @@
+mixin events_calendar-2( month, color, color2, date, m, name, link, date2, m2, name2, link2 )
+   .events_calendar__one_month
+      .row
+         .calendar.col
+            .relative
+            .calendar__holder
+               img( src='./assets/data/calendar/#{month}.svg?v=2' )
+         section( aria-label='Мероприятия' ).col
+            .row
+               .event__date_holder.col( class='event_#{color}' )
+                  .event__date !{date}
+                  .event__month_text !{m}
+               .line
+               .event__about_holder.col
+                  .event__name !{name}
+                  .event__link !{link}
+            .row
+               .event__date_holder.col( class='event_#{color2}' )
+                  .event__date !{date2}
+                  .event__month_text !{m2}
+               .line
+               .event__about_holder.col
+                  .event__name !{name2}
+                  .event__link !{link2}

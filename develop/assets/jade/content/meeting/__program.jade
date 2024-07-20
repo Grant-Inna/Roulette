@@ -1,0 +1,8 @@
+mixin program( t1, t2, title, name, topic, place )
+   .meeting__program
+      .meeting_program__time #{t1}&nbsp;&ndash; #{t2}
+      .meeting_program__info
+         .meeting_program__title !{title}
+         .meeting_program__person !{name}
+         .meeting_program__topic !{topic}
+         .meeting_program__place !{place}

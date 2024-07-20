@@ -1,0 +1,9 @@
+mixin direction( numb, title, img, link)
+   article.hackathon_direction__holder
+      .hackathon_direction__about(class='#{img}')
+         h1.text-27.mb4.mt1 !{title}
+         img( src='./assets/data/hackathon/#{img}.png?v=3' ).mb4
+         .hackathon_direction__link
+            a( href='./assets/data/hackathon/files/#{link}?v=2' target='_blank' ) Скачать
+            span &nbsp;задание для&nbsp;отборочного этапа
+      .hackathon_direction__icon( class='hackathon_direction__icon-#{numb}' )

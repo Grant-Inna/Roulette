@@ -1,0 +1,1 @@
+$(document).ready(function(){let o=$(".game__name");function n(o,n){o=o-.5+Math.random()*(n-o+1);return o=Math.round(o)}var e,l;o.length;l=n(1,o.length),console.log(l),0<l-4?console.log("От 4 - тут проходит"):(e=l,console.log(e-4+"   Меньше 4-х, Идёт в - 1")),l+4<=o.length?console.log("До "+(o.length-4)):(l=l,console.log(l+4+"   Больше "+o.length-4+", Идёт в + 1"))});
