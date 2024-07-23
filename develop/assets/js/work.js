@@ -1,5 +1,5 @@
 $(document).ready(function () {
-   
+   'use strict';
    // Функция с кручением этих классов по кругу
    
    function round() {
@@ -36,7 +36,10 @@ $(document).ready(function () {
    
    // Выведем рандомное число
    
-   let arr = $('.game__name'); // число элементов (строк)
+   var arr = [], // переменная для массива
+       arr = $('.game__name'); // число элементов (строк)
+   var cc = 4; // class count, а что за 4, спросишь ты - число классов у элементов до random и после
+      // посмотреть эти стили можно в name.less (или добавить ещё)
    
    function randomInteger(min, max) {
      var rand = min - 0.5 + Math.random() * (max - min + 1);
@@ -110,31 +113,179 @@ $(document).ready(function () {
    
    
    // Далее путём прибавки 1, поправили всё на число, вместо индексов
-   let q = (arr.length) - 4,
-       w = 1 + 4;
+   let q = (arr.length) - cc, // напоминаю, что это - число классов вверх и вниз выбранного
+       w = 1 + cc,
+       i, j;
+   
    
    /*console.log(q + '  ' + w); // Сейчас имеем 5 и 5 (9 строк)
    console.log(q + '  ' + w); // Сейчас имеем 8 и 5 (12 строк)
    console.log(q + '  ' + w); // Сейчас имеем 11 и 5 (15 строк)*/
    
-   function result() {
+/*   function result() {
       
-      let x = randomInteger(1, arr.length);
-      console.log(x);
-      0 < x - 4 ? console.log('От 4 - тут проходит') : small(x); // это наше q
-      x + 4 <= arr.length ? console.log('До ' + (arr.length - 4)) : big(x); // это w
-   }
+      let random = randomInteger(1, arr.length);
+      console.log(random);
+      0 < random - cc ? vanilla(random) : small(random); // это наше q
+      random + cc <= arr.length ? vanilla(random) : big(random); // это w
+   }*/
    
-   function small(x) {
-      console.log( (x - 4) + '   Меньше 4-х, Идёт в - 1')
+/*   function small(random) {
+      console.log((random - cc) + '   Меньше 4-х, Идёт в - 1')
    }
-   function big(x) {
-      console.log( (x + 4) + '   Больше ' + arr.length - 4 + ', Идёт в + 1');
+   function big(random) {
+      console.log((random + cc) + '   Больше ' + arr.length - cc + ', Идёт в + 1');
    }
    // Определили цифры у краёв массива, теперь функция для цифр в середине
-   function vanilla(x) {
+   function vanilla(random) {
+      console.log('Число ' + random + ' в середине между cc и ' + (arr.length - cc));
+      
+   }*/
+      // У нас 2
+      // 0 < random - cc ( -2 )? vanilla(random) : идёт сюда --> small(random);
+      // random + cc (2) <= arr.length ? идёт сюда --> vanilla(random) : big(random); Вероятно тут тоже нужны 2 функции
+/*   function result() {
+      
+      let random = randomInteger(1, arr.length);
+      // let random = 8;
+      console.log(random);
+      // console.log(arr.length);
+      
+      0 < random - cc ? vanilla_big(random) : small(random); // это наше q, проверка на маленьковость
+      random + cc <= arr.length ? small_vanilla(random) : big(random); // это w, проверка на крупноту
+      
+      // Цифра 4
+      // 0 < 4 - 4 (false)? vanilla_big(random) : -->  small(random); это наше q, проверка на маленьковость
+      // 4 + 4 <= 10 (true)? small_vanilla(random) : big(random); это w, проверка на крупноту
+      
+   }
+   function small(random) {
+      console.log((random - cc) + ' (random - cc) - Меньше ' + cc + ', идём вниз')
+   }
+   function big(random) {
+      console.log((random + cc) + ' (random + cc) - Больше ' + (arr.length - cc) + ', идём наверх');
+   }
+   // Определили цифры у краёв массива, теперь функция для цифр в середине
+   /!*function vanilla(random) {
+      console.log('Число ' + random + ' в середине между ' + cc + ' и ' + (arr.length - cc)); // да что за 4, спросишь ты - число классов у элементов до random и после
+      // посмотреть эти стили можно в name.less (или добавить ещё)
+   }*!/
+   function small_vanilla(random) { // Если число вниз меньше cc, но вверх все нормально
+      console.log((random + cc) + ', а минималка ' + cc + ', следовательно в этой функции прямолинейно идём верх')
+   }
+   function vanilla_big(random) { // Если число вниз подходит, но вверх больше arr.length
+      console.log((random - cc) + ', а максимум ' + arr.length + ', следовательно в этой функции прямолинейно идём вниз')
+   }
+   */
+   function clean() {
+      $('.two').removeClass('two');
+      $('.three').removeClass('three');
+      $('.four').removeClass('four');
+      $('.five').removeClass('five');
+      
+      $('.two-l').removeClass('two-l');
+      $('.three-l').removeClass('three-l');
+      $('.four-l').removeClass('four-l');
+      $('.five-l').removeClass('five-l');
+      
+      $('.active').removeClass('active');
+      $('.prev').removeClass('prev');
+      $('.next').removeClass('next');
+   }
+   function result() {
+   
+      clean();
+      // let random = randomInteger(1, arr.length);
+      let random = 3;
+      console.log(random);
+      
+      $('#game-' + random).addClass('active');
+      
+      // вверх - к меньшему! вниз - к большему
+      
+      
+      (arr.length - cc) <= random ? small_vanilla(random) : small(random, arr);  // это наше q, проверка на маленьковость
+      random <= arr.length - cc ? vanilla_big(random) : big(random, arr); // это w, проверка на крупноту
+      
+   }
+   // Ниже пробуем расширить работу функций
+   // С vanilla булет проще работать на данном этапе
+   
+   function small_vanilla(random) { // Если число вниз больше либо равно arr.length - cc
+      console.log((random + cc) + ', а минималка ' + cc + ', следовательно в этой функции прямолинейно идём ВВЕРХ К МЕНЬШЕМУ НАПРАВО small_vanilla' );
+      // Вверх, значит определяем элементы после основного и даём классы
+      $('#game-' + (random - 1)).addClass('two');
+      $('#game-' + (random - 2)).addClass('three');
+      $('#game-' + (random - 3)).addClass('four');
+      $('#game-' + (random - 4)).addClass('five');
    
    }
+   function vanilla_big(random) { // Если число вверх больше либо равно arr.length - cc
+      console.log((random) + ' не больше ' + (arr.length - cc) + ', следовательно в этой функции прямолинейно идём ВНИЗ К БОЛЬШЕМУ НАЛЕВО vanilla_big');
+      // Вниз, значит определяем элементы до основного и даём классы
+      $('#game-' + (random + 1)).addClass('two-l');
+      $('#game-' + (random + 2)).addClass('three-l');
+      $('#game-' + (random + 3)).addClass('four-l');
+      $('#game-' + (random + 4)).addClass('five-l');
+   }
+   
+   
+   function big(random, arr) { // Если число больше либо равно arr.length - cc
+      // console.log((random) + ' (random) - Больше ' + (arr.length - cc) + ', идём в big ВНИЗ, К БОЛЬШЕМУ, ПОТОМ К МЕНЬШЕМУ ЧЕРЕЗ ВЕРХ НАПРАВО через for');
+      console.log((random) + ' (random) - Больше ' + (arr.length - cc) + ', идём в big ВНИЗ, К БОЛЬШЕМУ, ПОТОМ К МЕНЬШЕМУ ЧЕРЕЗ ВЕРХ НАПРАВО через for');
+      let id_last_number = arr.length,
+          difference = Math.abs(random + cc - id_last_number);
+      console.log('big разница random + сс - id_last_number = ' + difference); // Цифер
+      
+      for ( i = random + 1; i <= id_last_number; i ++) { // Отсортировывем цифры до конца
+         
+         // console.log('i: ' + i);
+         
+         switch (i) {
+            case random + 1:
+               $('#game-' + i).addClass('two-l');
+               break;
+            case random + 2:
+               $('#game-' + i).addClass('three-l');
+               break;
+            case random + 3:
+               $('#game-' + i).addClass('four-l');
+               break;
+            case random + 4:
+               $('#game-' + i).addClass('five-l');
+               break;
+            
+   
+         }
+      }
+      for ( j = 1; j <= difference; j++ ) { // Отсортировывем цифры с начала
+         console.log('j: ' + j);
+         
+         switch (j) {
+            case 1:
+               $('#game-' + j).addClass('five-l');
+               break;
+            case 2:
+               $('#game-' + j).addClass('four-l');
+               break;
+            case 3:
+               $('#game-' + j).addClass('three-l');
+               break;
+            case 4:
+               $('#game-' + j).addClass('two-l');
+               break;
+            
+         }
+      }
+      
+   }
+   function small(random, arr) {  // число меньше либо равно arr.length - cc
+      console.log(random + ' random - Меньше 5, идём в small ВВЕРХ, К МЕНЬШЕМУ, ПОТОМ К БОЛЬШЕМУ НАЛЕВО серез for');
+       let id_last_number = arr.length,
+           difference = Math.abs(cc - random);
+      console.log('small разница cc - random = ' + difference);
+   }
+
    
    // game();
    result( );
