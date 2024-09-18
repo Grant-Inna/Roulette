@@ -13,32 +13,84 @@
     </head>
   <body id="container">
     <div id="container_main">
-      <div id="black_back"></div>
+      <div class="need_value">
+        <div class="flex">Введи число от&ensp;<span>1</span>&ensp;до&nbsp;&ensp;
+          <div id="num"></div>
+        </div>
+        <div class="dope">или больше, без разницы</div>
+        <div style="display: none" class="span">Выбор сделан</div>
+        <p></p>
+        <input name="numb" type="text" pattern="[0-9]*">
+      </div>
       <div class="container">
         <div class="games_name__list">
-          <p id="game-1" class="game__name five">1</p>
-          <p id="game-2" class="game__name four">2</p>
-          <p id="game-3" class="game__name three">3</p>
-          <p id="game-4" class="game__name two">4</p>
-          <p id="game-5" class="game__name active">5</p>
-          <p id="game-6" class="game__name two-l">6</p>
-          <p id="game-7" class="game__name three-l">7</p>
-          <p id="game-8" class="game__name four-l">8</p>
-          <p id="game-9" class="game__name five-l">9</p>
-          <p id="game-10" class="game__name next">10</p>
-          <p id="game-11" class="game__name next">11</p>
-          <p id="game-12" class="game__name next">12</p>
+              <p id="game-1">Попробуй ещё</p>
+              <p id="game-2">Затерянный мир III</p>
+              <p id="game-3">DRG Survivor</p>
+              <p id="game-4">Alice 2</p>
+              <p id="game-5">Расслабься... пока</p>
+              <p id="game-6">Into the Breach</p>
+              <p id="game-7">Dark Souls I</p>
+              <p id="game-8">Alice 1</p>
+              <p id="game-9">Русы против Ящеров</p>
+              <p id="game-10">Guacamelee!</p>
+              <p id="game-11">Демиурги II</p>
         </div>
+      </div>
+      <div class="stop">Довольно</div>
+      <div class="reload">Давай ещё раз</div>
+      <div class="stupid">
+        <div class="text">Камон! Ну написано же, что цифры вводить!
+          <div class="smile">(╯°□°）╯︵ ┻━┻</div>
+        </div>
+      </div>
+      <div class="games_photo__list">
+            <div id="photo-1"><img src="./assets/data/games/again.png">
+              <div class="year"></div>
+            </div>
+            <div id="photo-2"><img src="./assets/data/games/zatterinniq.jpg">
+              <div class="year"></div>
+            </div>
+            <div id="photo-3"><img src="./assets/data/games/drgs.jpg">
+              <div class="year"></div>
+            </div>
+            <div id="photo-4"><img src="./assets/data/games/alice2.jpg">
+              <div class="year"></div>
+            </div>
+            <div id="photo-5"><img src="./assets/data/games/goood.png">
+              <div class="year"></div>
+            </div>
+            <div id="photo-6"><img src="./assets/data/games/itb.jpg">
+              <div class="year"></div>
+            </div>
+            <div id="photo-7"><img src="./assets/data/games/ds1.avif">
+              <div class="year"></div>
+            </div>
+            <div id="photo-8"><img src="./assets/data/games/alice1.jpg">
+              <div class="year"></div>
+            </div>
+            <div id="photo-9"><img src="./assets/data/games/rysb1.jpg">
+              <div class="year"></div>
+            </div>
+            <div id="photo-10"><img src="./assets/data/games/Guacamelee.jpg">
+              <div class="year"></div>
+            </div>
+            <div id="photo-11"><img src="./assets/data/games/demiurgi2.jpg">
+              <div class="year"></div>
+            </div>
       </div>
     </div>
     <div class="footer__bottom center mb1 mt3">
-      <article class="footer__block">&copy;&nbsp;<span>2024&nbsp;&ndash;&nbsp;</span><span class="footer__year"></span> &nbsp;•••&nbsp;&nbsp;elGranto</article>
+      <article class="footer__block">&copy;&nbsp;<span>2024&nbsp;&ndash;&nbsp;</span><span class="footer__year"></span> &nbsp;•••&nbsp;&nbsp;elGarro</article>
       <div id="totop" class="footer__totop">
         <div class="icon-arrow-top"></div>
       </div>
     </div>
     <script src="./assets/js/jquery.js"></script>
     <script src="./assets/js/work.js"></script>
-    <script>$('article.footer__block span.footer__year').text(new Date().getFullYear())</script>
+    <script>
+      $('article.footer__block span.footer__year').text(new Date().getFullYear());
+      $('#num').text($('.games_name__list p[id^="game-"]').length)
+    </script>
   </body>
 </html>

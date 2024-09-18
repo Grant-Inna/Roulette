@@ -2,182 +2,36 @@ $(document).ready(function () {
    'use strict';
    // Функция с кручением этих классов по кругу
    
-   function round() {
-      $('.games_name__list .active').next('p').addClass('two');
-      $('.games_name__list .active').prev('p').addClass('two-l');
-      
-      $('.games_name__list .two').first().prev('p').addClass('three');
-      $('.games_name__list .two-l').last().next('p').addClass('three-l');
-      
-      $('.games_name__list .three').first().prev('p').addClass('four');
-      $('.games_name__list .three-l').last().next('p').addClass('four-l');
-      
-      $('.games_name__list .four').first().prev('p').addClass('five');
-      $('.games_name__list .four-l').last().next('p').addClass('five-l');
-      
-      
+   $('.reload').on( 'click', () => { location.reload()});
+   
+   function showHowStupid() {
+      $('.stupid').fadeIn(2600);
+      $('.reload').text('');
+      $('.reload').fadeIn(2900).addClass('big').html('<div>ПОПРОБУЙ ЕЩЁ</div><div class="second">Я В ТЕБЯ ВЕРЮ</div>');
    }
-   // date = new Date();
-   // function tiktak() {
-   //    date = new Date();
-   //    return (60 - date.getSeconds())
-   // }
-      // console.log(date.getSeconds());
-      // setInterval(function () {
-      //
-      //    console.log(date.getSeconds());
-      //
-      // }, date.getSeconds());
-         
-      
-      
-      
-   
-   
-   // Выведем рандомное число
    
    var arr = [], // переменная для массива
-       arr = $('.game__name'); // число элементов (строк)
-   var cc = 4; // class count, а что за 4, спросишь ты - число классов у элементов до random и после
+      arr = $('.games_name__list p[id^="game-"]'); // число элементов (строк)
+   var cc = 4, // class count, а что за 4, спросишь ты - число классов у элементов вверх и вниз от random
       // посмотреть эти стили можно в name.less (или добавить ещё)
+      i, j, p, t; // переменные для for
    
-   function randomInteger(min, max) {
-     var rand = min - 0.5 + Math.random() * (max - min + 1);
-     rand = Math.round(rand);
-     
-     return rand;
+   // Выведем рандомное число
+   function randomInteger(min, max) { // тут и творится магия рандома
+      var rand = min - 0.5 + Math.random() * (max - min + 1);
+      rand = Math.round(rand);
+      
+      return rand;
    }
    
-   // console.log( randomInteger( 1, 9 ));
-   function game() {
-      $('.games_name__list .active').removeClass('active');
-      console.log( $('#game-' + randomInteger( 1, 9 )).addClass('active'));
-      $('.games_name__list .active').next('p').addClass('two');
-      $('.games_name__list .active').prev('p').addClass('two-l');
+   function randomIntegerBIG(min, max) { // тут и творится магия рандома
+      var rand = min - 0.5 + Math.random() * (max - min + 1);
+      rand = Math.round(rand) * 100;
       
-      $('.games_name__list .two').first().prev('p').addClass('three');
-      $('.games_name__list .two-l').last().next('p').addClass('three-l');
-      
-      $('.games_name__list .three').first().prev('p').addClass('four');
-      $('.games_name__list .three-l').last().next('p').addClass('four-l');
-      
-      $('.games_name__list .four').first().prev('p').addClass('five');
-      $('.games_name__list .four-l').last().next('p').addClass('five-l');
+      return rand;
    }
    
-   // Определить место номера в цепочке - получается из другой функции ОПРЕДЕЛЁННАЯ
-   // Фиксированное число классов сверху и снизу - ПОСТОЯННАЯ
-   // Из вертикали цифр создать замкнутый круг
-   // Возможно от присваивоения классов со свойствами перейти к присваению элементам по id
-   // Пока идет присвоение по местоположению в цепи
-   
-   // массив цифер, если далее конец, брать первый
-   // поиск последнего элемента массива
-
-   // console.log(arr[arr.length - 1]); // выводим в консоль последний элемент массива
-   
-   
-   // берем результаты random, например 5. Значит выставляем классы 4, 3, 2, 1 и 6, 7, 8, 9
-   // Такие результы можно получить, вычетая 4 из 5-ти, и прибавив 4 к 5
-   // рандом у нас 7
-   // 7 - 4 = 3. 6, 5, 4, 3. То есть arr[random - 1], arr[random - 1], arr[random - 2], arr[random - 3], arr[random - 4]
-   // 7 + 4 = 11! 8,   9   , 10, 11
-   // Сперва проверка на последний элемент - берём arr[0], arr[1] - можно получить через разницу числа индексов и random (random + 4 - arr[arr.length - 1]) (то есть 7 + 4 - 9) = 2. Перебор массива с этим числом + 1
-   
-   
-   // Получается при 2 - 1, 0, 9, 8, проверка на первый элемент (индекс 0). (random + 4 - arr[arr.length - 1]) (то есть 9 - 2 + 4) = 9 - 6 = 3 - тут  перебор маасива с ограничением этого числа - 1
-   
-   // у нас есть 0 и arr[arr.length - 1 (9)] - нужно проверить к какому ближе наш рандом
-   // рандом у нас 7? он ближе к перебору +1. Как это узнать?
-   // К 7 можно прибавить 4 и убавить = 3 и 11, 11 больше последнего индекса
-   // рандом у нас 3, он ближе к массиву - 1. Как это узнать
-   // 3 + 4 = 7, 3 - 4 = -1, меньше первого индекса
-   // рандом 5. Он и 1 и 9 - в рамках массива
-   
-   // Получается, первая проверка тут должна быть на "уместился", "не уместился"  0 < x - 4 && x + 4 < arr[arr.length - 1]
-   // Вторым ветвлением определяем сторону: х + 4 > arr[arr.length - 1]? x - 4 < 0?
-   
-   // console.log(randomInteger(1, arr.length- 1));
-
-  /* function result( ) {
-      // ГЛАВНОЕ не запутиться - индексы считаем, а не сам массив объектов!
-      let x = randomInteger(0, arr.length - 1);
-      console.log(x);
-      0 <= x - 4 ? console.log('От 4 до 9') : console.log('Меньше 4-х, Идёт в - 1');
-      x + 4 < arr.length - 1 ? console.log('От 4 до 0') : console.log('Больше 4-х, Идёт в + 1');
-   }*/
-   
-   // Наше крамольное, рассчитываемое: 0, 4 и 8 (arr.length - 1), как высчитать эти цифры, не создавая константу
-   // 0 - константа, 8  (arr.length - 1) - константа
-   //4 же - 0 + 4 и 8 - 4, то есть можно преобразовать как общее количество - 4 и ноль + 4
-   
-   
-   // Далее путём прибавки 1, поправили всё на число, вместо индексов
-   let q = (arr.length) - cc, // напоминаю, что это - число классов вверх и вниз выбранного
-       w = 1 + cc,
-       i, j;
-   
-   
-   /*console.log(q + '  ' + w); // Сейчас имеем 5 и 5 (9 строк)
-   console.log(q + '  ' + w); // Сейчас имеем 8 и 5 (12 строк)
-   console.log(q + '  ' + w); // Сейчас имеем 11 и 5 (15 строк)*/
-   
-/*   function result() {
-      
-      let random = randomInteger(1, arr.length);
-      console.log(random);
-      0 < random - cc ? vanilla(random) : small(random); // это наше q
-      random + cc <= arr.length ? vanilla(random) : big(random); // это w
-   }*/
-   
-/*   function small(random) {
-      console.log((random - cc) + '   Меньше 4-х, Идёт в - 1')
-   }
-   function big(random) {
-      console.log((random + cc) + '   Больше ' + arr.length - cc + ', Идёт в + 1');
-   }
-   // Определили цифры у краёв массива, теперь функция для цифр в середине
-   function vanilla(random) {
-      console.log('Число ' + random + ' в середине между cc и ' + (arr.length - cc));
-      
-   }*/
-      // У нас 2
-      // 0 < random - cc ( -2 )? vanilla(random) : идёт сюда --> small(random);
-      // random + cc (2) <= arr.length ? идёт сюда --> vanilla(random) : big(random); Вероятно тут тоже нужны 2 функции
-/*   function result() {
-      
-      let random = randomInteger(1, arr.length);
-      // let random = 8;
-      console.log(random);
-      // console.log(arr.length);
-      
-      0 < random - cc ? vanilla_big(random) : small(random); // это наше q, проверка на маленьковость
-      random + cc <= arr.length ? small_vanilla(random) : big(random); // это w, проверка на крупноту
-      
-      // Цифра 4
-      // 0 < 4 - 4 (false)? vanilla_big(random) : -->  small(random); это наше q, проверка на маленьковость
-      // 4 + 4 <= 10 (true)? small_vanilla(random) : big(random); это w, проверка на крупноту
-      
-   }
-   function small(random) {
-      console.log((random - cc) + ' (random - cc) - Меньше ' + cc + ', идём вниз')
-   }
-   function big(random) {
-      console.log((random + cc) + ' (random + cc) - Больше ' + (arr.length - cc) + ', идём наверх');
-   }
-   // Определили цифры у краёв массива, теперь функция для цифр в середине
-   /!*function vanilla(random) {
-      console.log('Число ' + random + ' в середине между ' + cc + ' и ' + (arr.length - cc)); // да что за 4, спросишь ты - число классов у элементов до random и после
-      // посмотреть эти стили можно в name.less (или добавить ещё)
-   }*!/
-   function small_vanilla(random) { // Если число вниз меньше cc, но вверх все нормально
-      console.log((random + cc) + ', а минималка ' + cc + ', следовательно в этой функции прямолинейно идём верх')
-   }
-   function vanilla_big(random) { // Если число вниз подходит, но вверх больше arr.length
-      console.log((random - cc) + ', а максимум ' + arr.length + ', следовательно в этой функции прямолинейно идём вниз')
-   }
-   */
-   function clean() {
+   function clean() { // убираем все классы
       $('.two').removeClass('two');
       $('.three').removeClass('three');
       $('.four').removeClass('four');
@@ -189,106 +43,304 @@ $(document).ready(function () {
       $('.five-l').removeClass('five-l');
       
       $('.active').removeClass('active');
-      $('.prev').removeClass('prev');
-      $('.next').removeClass('next');
-   }
-   function result() {
-   
-      clean();
-      // let random = randomInteger(1, arr.length);
-      let random = 3;
-      console.log(random);
+      $('.grats').removeClass('grats');
       
-      $('#game-' + random).addClass('active');
+      $('.one_photo').removeClass('one_photo');
+   }
+   
+   var time, timer, timerr, timermin;
+   
+   $('.need_value input').on('change', (event) => {
+      event.preventDefault();
+      // event.stopPropagation();
+      clearTimeout(timer);
+      clearTimeout(timerr);
+      clearTimeout(timermin);
+      clean();
+      
+      var inputNumber = $('input').prop('value');
+      input_numb(inputNumber, '0');
+      
+   });
+   
+   function input_numb(inputNumber) {
+      
+      $('.need_value .flex').hide();
+      $('.need_value .dope').hide();
+      $('.need_value .span').fadeIn(200).addClass('done');
+      $('.need_value').css('margin-top', '10vh');
+      $('.need_value input').fadeOut(200);
+      $('.need_value p').text(inputNumber).addClass('numb').fadeIn(1500);
+      $('.games_name__list').fadeIn(100).addClass('game');
+      timer = setTimeout(() => {
+         $('.need_value').slideUp();
+         $('.need_value .done').slideUp();
+      }, 2000);
+      timerr = setTimeout(() => {
+         $('.need_value .span').slideUp()
+      }, 2000);
+      timermin = setTimeout(() => {
+         $('.need_value p').slideUp()
+      }, 2600);
+      
+      // debugger
+      // currentRandom(current);
+      time = setTimeout(rolling, 300, inputNumber);
+   }
+   
+   function currentRandom(max) { // тут и творится магия рандома
+      // console.log('isNaN max   ' + isNaN(max));
+      let rand = Math.random() * (+max + (max / arr.length) + (Math.random() * 10)) + Math.random() * 5;
+      rand = Math.round(rand);
+      
+      rand <= 1 ? rand =  Math.round(0.5 + Math.random() * (+max + (max / (arr.length - max)))) : rand = rand;
+      rand >= arr.length + 10 ? rand = 1 : rand = rand;
+      rand > arr.length ? rand = Math.round(rand / 2)  : rand = rand;
+
+      return rand;
+   }
+   
+   
+   function result(num) {
+      let random;
+      clean();
+      
+      num ? random = num : random = randomInteger(1, arr.length);
+      
+      $('#game-' + random).prop('class', '').addClass('active');
       
       // вверх - к меньшему! вниз - к большему
-      
-      
-      (arr.length - cc) <= random ? small_vanilla(random) : small(random, arr);  // это наше q, проверка на маленьковость
-      random <= arr.length - cc ? vanilla_big(random) : big(random, arr); // это w, проверка на крупноту
+      cc < random ? small_vanilla(random) : small(random);  // это наше q, проверка на маленьковость
+      random <= arr.length - cc ? vanilla_big(random) : big(random); // это w, проверка на крупноту
       
    }
-   // Ниже пробуем расширить работу функций
-   // С vanilla булет проще работать на данном этапе
    
-   function small_vanilla(random) { // Если число вниз больше либо равно arr.length - cc
-      console.log((random + cc) + ', а минималка ' + cc + ', следовательно в этой функции прямолинейно идём ВВЕРХ К МЕНЬШЕМУ НАПРАВО small_vanilla' );
-      // Вверх, значит определяем элементы после основного и даём классы
-      $('#game-' + (random - 1)).addClass('two');
-      $('#game-' + (random - 2)).addClass('three');
-      $('#game-' + (random - 3)).addClass('four');
-      $('#game-' + (random - 4)).addClass('five');
-   
-   }
-   function vanilla_big(random) { // Если число вверх больше либо равно arr.length - cc
-      console.log((random) + ' не больше ' + (arr.length - cc) + ', следовательно в этой функции прямолинейно идём ВНИЗ К БОЛЬШЕМУ НАЛЕВО vanilla_big');
-      // Вниз, значит определяем элементы до основного и даём классы
-      $('#game-' + (random + 1)).addClass('two-l');
-      $('#game-' + (random + 2)).addClass('three-l');
-      $('#game-' + (random + 3)).addClass('four-l');
-      $('#game-' + (random + 4)).addClass('five-l');
-   }
-   
-   
-   function big(random, arr) { // Если число больше либо равно arr.length - cc
-      // console.log((random) + ' (random) - Больше ' + (arr.length - cc) + ', идём в big ВНИЗ, К БОЛЬШЕМУ, ПОТОМ К МЕНЬШЕМУ ЧЕРЕЗ ВЕРХ НАПРАВО через for');
-      console.log((random) + ' (random) - Больше ' + (arr.length - cc) + ', идём в big ВНИЗ, К БОЛЬШЕМУ, ПОТОМ К МЕНЬШЕМУ ЧЕРЕЗ ВЕРХ НАПРАВО через for');
-      let id_last_number = arr.length,
-          difference = Math.abs(random + cc - id_last_number);
-      console.log('big разница random + сс - id_last_number = ' + difference); // Цифер
+   function small_vanilla(random) { // Если число вниз больше cc
+      // console.log('small_vanilla' );
+      // Вверх, значит определяем элементы до основного и даём классы
+      $('#game-' + (random - 1)).prop('class', '').addClass('two');
+      $('#game-' + (random - 2)).prop('class', '').addClass('three');
+      $('#game-' + (random - 3)).prop('class', '').addClass('four');
+      $('#game-' + (random - 4)).prop('class', '').addClass('five');
       
-      for ( i = random + 1; i <= id_last_number; i ++) { // Отсортировывем цифры до конца
-         
-         // console.log('i: ' + i);
-         
+   }
+   
+   function vanilla_big(random) { // Если число вверх  меньше или равно arr.length - cc
+      // console.log('vanilla_big');
+      // Вниз, значит определяем элементы от основного и даём классы
+      $('#game-' + (+random + 1)).prop('class', '').addClass('two-l');
+      $('#game-' + (+random + 2)).prop('class', '').addClass('three-l');
+      $('#game-' + (+random + 3)).prop('class', '').addClass('four-l');
+      $('#game-' + (+random + 4)).prop('class', '').addClass('five-l');
+   }
+   
+   function big(random) { // Если число больше либо равно arr.length - cc
+      // console.log('big');
+      let difference = Math.abs(arr.length - (random + cc));
+      
+      for (i = random + 1; i <= arr.length; i++) { // Отсортировывем цифры до конца
+         // console.log('difference:  ' + difference);
          switch (i) {
             case random + 1:
-               $('#game-' + i).addClass('two-l');
+               $('#game-' + i).prop('class', '').addClass('two-l');
                break;
             case random + 2:
-               $('#game-' + i).addClass('three-l');
+               $('#game-' + i).prop('class', '').addClass('three-l');
                break;
             case random + 3:
-               $('#game-' + i).addClass('four-l');
+               $('#game-' + i).prop('class', '').addClass('four-l');
                break;
             case random + 4:
-               $('#game-' + i).addClass('five-l');
+               $('#game-' + i).prop('class', '').addClass('five-l');
                break;
-            
-   
          }
       }
-      for ( j = 1; j <= difference; j++ ) { // Отсортировывем цифры с начала
-         console.log('j: ' + j);
+      
+      for (j = 0; j <= difference; j++) { // Отсортировывем цифры с начала
+         // console.log('j:  ' + j);
          
          switch (j) {
+            case 0:
+               $('#game-' + (difference - j)).prop('class', '').addClass('five-l');
+               break;
             case 1:
-               $('#game-' + j).addClass('five-l');
+               $('#game-' + (difference - j)).prop('class', '').addClass('four-l');
                break;
             case 2:
-               $('#game-' + j).addClass('four-l');
+               $('#game-' + (difference - j)).prop('class', '').addClass('three-l');
                break;
             case 3:
-               $('#game-' + j).addClass('three-l');
-               break;
-            case 4:
-               $('#game-' + j).addClass('two-l');
+               $('#game-' + (difference - j)).prop('class', '').addClass('two-l');
                break;
             
          }
       }
       
    }
-   function small(random, arr) {  // число меньше либо равно arr.length - cc
-      console.log(random + ' random - Меньше 5, идём в small ВВЕРХ, К МЕНЬШЕМУ, ПОТОМ К БОЛЬШЕМУ НАЛЕВО серез for');
-       let id_last_number = arr.length,
-           difference = Math.abs(cc - random);
-      console.log('small разница cc - random = ' + difference);
-   }
-
    
-   // game();
-   result( );
-   // console.log(result());
+   function small(random) {  // число меньше cc
+      // console.log('small');
+      let difference = cc - random;
+      
+      for (i = random; i > 0; i--) { // Отсортировывем цифры до начала
+         // console.log('i: ' + i);
+         switch (i) {
+            case random - 1:
+               $('#game-' + i).prop('class', '').addClass('two');
+               break;
+            case random - 2:
+               $('#game-' + i).prop('class', '').addClass('three');
+               break;
+            case random - 3:
+               $('#game-' + i).prop('class', '').addClass('four');
+               break;
+            case random - 4:
+               $('#game-' + i).prop('class', '').addClass('five');
+               break;
+         }
+      }
+      
+      for (j = arr.length; j >= (arr.length - difference); j--) { // Отсортировывем цифры с начала
+         // console.log('j: ' + j);
+         
+         switch (j) {
+            case arr.length - difference:
+               $('#game-' + j).prop('class', '').addClass('five');
+               break;
+            case arr.length - difference + 1:
+               $('#game-' + j).prop('class', '').addClass('four');
+               break;
+            case arr.length - difference + 2:
+               $('#game-' + j).prop('class', '').addClass('three');
+               break;
+            case arr.length - difference + 3:
+               $('#game-' + j).prop('class', '').addClass('two');
+               break;
+            
+         }
+      }
+   }
+   
+   
+   function grats(num) {
+      $('#game-' + num).addClass('grats');
+   }
+   
+   
+   var stop_number;
+   
+   function rolling(inputNumber) {
+      clean();
+      
+      let current = 1,
+         to = arr.length;
+      
+      var timerId = setInterval(function () {
+         // console.log('current: ' + current);
+         result(current);
+         if (current == to) {
+            current = 1;
+            // clean();
+         }
+         current++;
+      }, 100); // быстро, но анимация не захлёбывается
+      
+      let st = setTimeout(() => {
+         $('.stop').fadeIn()
+      }, 2300); // 15000 - 15 секунд
+      $('.stop').on('click', () => {
+         clearInterval(timerId);
+         clearTimeout(st);
+         $('.stop').fadeOut(1900);
+         firstRoll(current, inputNumber);
+         return stop_number = current;
+      })
+      
+   }
+   
+   function firstRoll(now, inputNumber) {
+      result(now);
+      
+      let first = now,
+          to = arr.length;
+      
+      var timerFirst = setInterval(function () {
+
+         result(first);
+         if (first == to) {
+            secondRoll(inputNumber);
+            clearInterval(timerFirst);
+         }
+         first++;
+      }, 180);
+   }
+   
+   function secondRoll(inputNumber) {
+      
+      let second = 1,
+          to = arr.length;
+      
+      var timerMiddle = setInterval(function () {
+         result(second);
+         if (second == to) {
+            clearInterval(timerMiddle);
+            thirdRoll(inputNumber);
+         }
+         second++;
+      }, 240);
+   }
+   
+   function thirdRoll(inputNumber) {
+      console.log('thirdRoll до введённого');
+      
+      let third = 1,
+          resta = arr.length - stop_number; // сколько осталось у введённого числа до arr.length
+      if ( resta == 0 ) { resta = 1 }
+      
+      console.log('stop_number: ' + stop_number);
+      console.log('resta: ' + resta);
+      
+      var timerThree = setInterval(function () {
+         
+         result(third);
+         if (third == stop_number) {
+            finalRoll(inputNumber, resta, stop_number);
+            clearInterval(timerThree);
+         }
+         third++;
+      }, 320);
+   }
+   function finalRoll(inputNumber, resta, stop_number) {
+      console.log('финальный ролл до рандомного');
+      
+      let random = currentRandom(inputNumber);
+      // console.log('isNan random: ' + isNaN(random));
+      
+      let last = random - resta; // сколько осталось на финальный шаг
+          last = Math.abs(last); // сделаем положительным
+      if ( last == 0 ) { last = 1 }
+      if (isNaN(last)) {
+         showHowStupid()
+      }    console.log('isNan last: ' + isNaN(last));
+      
+      let final = stop_number;
+      
+      var timerFinal = setInterval(function () {
+         console.log('final:   ' + final);
+         result(final);
+         if ( final == arr.length ) {
+            final = 1
+         } else if (final == last) {
+            clearInterval(timerFinal);
+            grats(final);
+            $('.one_photo').removeClass('one_photo');
+            $('#photo-' + final).addClass('one_photo');
+            $('.reload').fadeIn();
+         } else {
+            final++;
+         }
+         
+      }, 450);
+   }
    
 });

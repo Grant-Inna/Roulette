@@ -1,4 +1,5 @@
 script( src='./assets/js/jquery.js' )
 script( src='./assets/js/work.js' )
 script.
-   $('article.footer__block span.footer__year').text(new Date().getFullYear())
+   $('article.footer__block span.footer__year').text(new Date().getFullYear());
+   $('#num').text($('.games_name__list p[id^="game-"]').length)

@@ -5,23 +5,50 @@ html
    +title( 'Рулеточка :3' )
 
    body#container
+      include ./assets/jade/roulette/__game
+      include ./assets/jade/roulette/__photo
       #container_main
-         #black_back
+         .need_value
+            .flex Введи число от&ensp;
+               span 1
+               | &ensp;до&nbsp;&ensp;
+               #num
+            .dope или больше, без разницы
+            div.span( style='display: none') Выбор сделан
+            p
+            input( name='numb' type='text' pattern="[0-9]*")
          .container
             .games_name__list
+               +game( '1', 'Попробуй ещё')
+               +game( '2', 'Затерянный мир III')
+               +game( '3', 'DRG Survivor')
+               +game( '4', 'Alice 2')
+               +game( '5', 'Расслабься... пока')
+               +game( '6', 'Into the Breach')
+               +game( '7', 'Dark Souls I')
+               +game( '8', "Alice 1")
+               +game( '9', 'Русы против Ящеров')
+               +game( '10', 'Guacamelee!')
+               +game( '11', 'Демиурги II')
 
-               p.game__name#game-1.five 1
-               p.game__name#game-2.four 2
-               p.game__name#game-3.three 3
-               p.game__name#game-4.two 4
-               p.game__name#game-5.active 5
-               p.game__name#game-6.two-l 6
-               p.game__name#game-7.three-l 7
-               p.game__name#game-8.four-l 8
-               p.game__name#game-9.five-l 9
-               p.game__name#game-10.next 10
-               p.game__name#game-11.next 11
-               p.game__name#game-12.next 12
+         .stop Довольно
+         .reload Давай ещё раз
+         .stupid
+            .text Камон! Ну написано же, что цифры вводить!
+               .smile (╯°□°）╯︵ ┻━┻
+
+         .games_photo__list
+            +photo( '1', 'again.png', '')
+            +photo( '2', 'zatterinniq.jpg', '')
+            +photo( '3', 'drgs.jpg', '')
+            +photo( '4', 'alice2.jpg', '')
+            +photo( '5', 'goood.png', '')
+            +photo( '6', 'itb.jpg', '')
+            +photo( '7', 'ds1.avif', '')
+            +photo( '8', 'alice1.jpg', '')
+            +photo( '9', 'rysb1.jpg', '')
+            +photo( '10', 'Guacamelee.jpg', '')
+            +photo( '11', 'demiurgi2.jpg', '')
 
 
 
